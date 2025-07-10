@@ -113,7 +113,7 @@ async function setupConversation(conversation: Conversation, ctx: Context) {
 
     scheduleUserReports(ctx.from?.id!, inputMorningReportTime, inputEveningReportTime);
 
-    await ctx.reply("Настройки сохранены, их можно посмотреть в /settings");
+    await ctx.reply("Настройки сохранены!");
     console.log(await setUserSetupData(db, ctx.from?.id!, data));
 }
 dialog.use(createConversation(setupConversation));

@@ -25,14 +25,14 @@ callbacks.callbackQuery("buy", async (ctx) => {
                 "XTR",
                 [
                     {
-                        amount: 1,
+                        amount: 5,
                         label: "Timenator Premium",
                     },
                 ],
             );
         } catch (e) {
                 console.error("Ошибка при отправке счета:", e);
-                await ctx.reply("Произошла ошибка при создании счета. Попробуйте позже.");
+                await ctx.reply("Произошла ошибка при создании счета. Попробуйте позже");
         }
     } else {
         await ctx.reply("У вас уже есть *Timenator Premium*\n\n_Если вы хотите поддержать разработчика – отправьте звёзды @greenlr_", {

@@ -5,6 +5,7 @@ import { PromptParams, generatePrompt } from "../../utils/promptGenerator";
 import { getGoogleCalendarEvents, getGoogleCalendarTasks, getGoogleCalendarTime } from "./googleCalendarService";
 import { findUser, getUserTokens } from "./userService";
 import db from "../../db";
+import bot from "../../bot";
 
 const ai = new GoogleGenAI({
     apiKey: process.env.GEMINI_API_KEY,
@@ -29,7 +30,8 @@ export async function getAiResponse(basePrompt: string, request?: string) {
         model: "gemma-3-27b-it",
         contents,
         config: {
-            temperature: 1.0,
+            temperature: 0.8,
+            maxOutputTokens: 196,
         }
     });
 
@@ -91,5 +93,5 @@ export async function sendReport(telegramId: number, timeOfDay: "morning" | "eve
 
     const response = await getAiResponse(prompt);
 
-    return response;
+    bot.api.sendMessage(user?.id!, response!);
 }

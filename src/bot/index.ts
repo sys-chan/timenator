@@ -5,7 +5,7 @@ import handlers from "./handlers";
 import { ConversationFlavor } from "@grammyjs/conversations";
 import middlewares from "./middlewares";
 
-const bot = new Bot<ConversationFlavor<CustomContext>>(process.env.TEST_BOT_TOKEN, {client: {environment: "test"}});
+const bot = new Bot<ConversationFlavor<CustomContext>>(process.env.BOT_TOKEN);
 
 middlewares.forEach(middleware => bot.use(middleware));
 handlers.forEach(handler => bot.use(handler));
